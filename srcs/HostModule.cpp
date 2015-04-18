@@ -14,6 +14,11 @@
 #include <sys/types.h>
 #include <sys/sysctl.h>
 
+#include <stdlib.h>
+#include <pwd.h>
+#include <stdio.h>
+#include <unistd.h>
+
 HostModule::HostModule(Core *core)
 	: _core(core), _hostname("")
 {
@@ -41,9 +46,20 @@ void				HostModule::refresh(void)
 	len = 1048;
 	sysctlbyname("kern.hostname", str, &len, NULL, 0);
 	_hostname = str;
+
+	struct passwd *pw;
+	uid_t uid;
+	uid = getuid();
+	pw = getpwuid(uid);
+	this->_username = "";
+	if (pw)
+	{
+		this->_username = pw->pw_name;
+	}
 }
 
 void				HostModule::display(IMonitorDisplay *display, int y)
 {
 	display->print(-1, y + 1, _hostname, F_CENTER);
+	display->print(-1, y + 2, _username, F_CENTER);
 }

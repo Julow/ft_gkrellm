@@ -34,6 +34,7 @@ protected:
 	Core						*_core;
 
 	std::string					_hostname;
+	std::string					_username;
 
 private:
 	HostModule(HostModule const &src);
