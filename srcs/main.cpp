@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/18 13:05:34 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/18 18:16:55 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/18 18:43:16 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "Core.hpp"
 #include "NCursesDisplay.hpp"
 #include "HostModule.hpp"
+#include <iostream>
 
 int				main(int argc, char **argv)
 {

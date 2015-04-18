@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/18 13:01:16 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/18 17:53:15 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/18 18:39:39 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ public:
 	virtual bool						update(void) = 0;
 	virtual void						display(void) = 0;
 
-	virtual void						print(int x, int y, std::string const &data) = 0;
+	virtual void						print(int x, int y, std::string const &data, int flags) = 0;
 
 protected:
 

@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/18 13:01:06 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/18 18:15:18 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/18 18:40:51 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ public:
 
 	virtual const char			*getName(void) const = 0;
 
-	virtual int					getWidth(void) const = 0;
 	virtual int					getHeight(void) const = 0;
 
 	virtual void				refresh(void) = 0;

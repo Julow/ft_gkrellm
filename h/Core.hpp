@@ -6,16 +6,14 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/18 13:04:53 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/18 18:03:55 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/18 18:43:30 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CORE_HPP
 # define CORE_HPP
 
-# include "IMonitorDisplay.hpp"
-# include "IMonitorModule.hpp"
-# include <iostream>
+# include "ft_gk.h"
 # include <vector>
 
 class	Core
