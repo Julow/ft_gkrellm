@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/18 13:04:51 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/18 14:52:58 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/18 15:28:49 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void					Core::refreshModules(void)
 	{
 		std::cerr << "Refreshing [" << (*it)->getName() << "]" << std::endl;
 		(*it)->refresh(*this);
-		it++;
+		++it;
 	}
 }
 
@@ -43,8 +43,8 @@ void					Core::displayModules(void)
 	while (it != this->_displays.end())
 	{
 		std::cerr << "Displaying on [" << (*it)->getName() << "]" << std::endl;
-		(*it)->refresh(*this);
-		it++;
+		(*it)->display(*this);
+		++it;
 	}
 }
 
