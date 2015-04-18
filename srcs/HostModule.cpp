@@ -6,13 +6,13 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/18 15:22:52 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/18 15:51:41 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/18 18:13:49 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HostModule.hpp"
 
-HostModule::HostModule(Core &core)
+HostModule::HostModule(Core *core)
 	: _core(core), _hostname("")
 {
 }
@@ -36,13 +36,13 @@ int					HostModule::getHeight(void) const
 	return (2);
 }
 
-void				HostModule::refresh()
+void				HostModule::refresh(void)
 {
 	_hostname = "lol";
 }
 
-void				HostModule::display(IMonitorDisplay &display)
+void				HostModule::display(IMonitorDisplay *display, int y)
 {
-	display.print(0, 0, "Hostname: ");
-	display.print(10, 0, _hostname);
+	display->print(0, y, "Hostname: ");
+	display->print(10, y, _hostname);
 }

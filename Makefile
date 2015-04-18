@@ -6,19 +6,19 @@ H_DIRS := h
 O_DIR := o
 LIBS := 
 CC := clang++
-FLAGS := -Wall -Wextra -Werror -O2
-LINKS := 
+FLAGS := -Wall -g
+LINKS := -lncurses
 HEADS := -Ih 
 
 all: $(NAME)
 
-o/Core.cpp.o: srcs/Core.cpp h/Core.hpp
+o/Core.cpp.o: srcs/Core.cpp h/Core.hpp h/NCursesDisplay.hpp
 	@$(COMPILE)
-o/HostModule.cpp.o: srcs/HostModule.cpp
+o/HostModule.cpp.o: srcs/HostModule.cpp h/HostModule.hpp
 	@$(COMPILE)
-o/main.cpp.o: srcs/main.cpp h/ft_gk.h h/Core.hpp h/NCursesDisplay.hpp
+o/main.cpp.o: srcs/main.cpp h/ft_gk.h h/Core.hpp h/NCursesDisplay.hpp h/HostModule.hpp
 	@$(COMPILE)
-o/NCursesDisplay.cpp.o: srcs/NCursesDisplay.cpp h/NCursesDisplay.hpp
+o/NCursesDisplay.cpp.o: srcs/NCursesDisplay.cpp h/NCursesDisplay.hpp h/IMonitorModule.hpp h/Core.hpp
 	@$(COMPILE)
 
 MSG_0 := printf '\033[0;32m%-23.23s\033[0;0m\r'
