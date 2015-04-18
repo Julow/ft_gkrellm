@@ -65,22 +65,22 @@ void				CpuModule::display(IMonitorDisplay *display, int y)
 {
 	std::ostringstream			oss;
 
-	display->print(0, y, this->_cpuName);
-	display->print(0, y + 1, "Nb coeurs:");
+	display->print(0, y, this->_cpuName, F_CENTER);
+	display->print(0, y + 1, "Nb coeurs:", 0);
 	oss << this->_ncpu;
-	display->print(15, y + 1, oss.str());
-	display->print(0, y + 2, "Bus speed:");
+	display->print(15, y + 1, oss.str(), 0);
+	display->print(0, y + 2, "Bus speed:", 0);
 	oss.str("");
 	oss.clear();
 	oss << this->_busFrequency;
-	display->print(15, y + 2, oss.str());
-	display->print(0, y + 3, "CPU speed:");
+	display->print(15, y + 2, oss.str(), 0);
+	display->print(0, y + 3, "CPU speed:", 0);
 	oss.str("");
 	oss.clear();
 	oss << this->_cpuFrequency << " GHz";
-	display->print(15, y + 3, oss.str());
+	display->print(15, y + 3, oss.str(), 0);
 
-	display->print(0, y + 4, "Activity:");
-	display->print(15, y + 4, "TODO");
+	display->print(0, y + 4, "Activity:", 0);
+	display->print(15, y + 4, "TODO", 0);
 
 }

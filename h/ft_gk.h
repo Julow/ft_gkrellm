@@ -15,7 +15,7 @@
 
 # define IGNORE(a)		(static_cast<void>(a))
 
-# define WIN_WIDTH		30
+# define WIN_WIDTH		50
 
 # define F_CENTER		(1 << 1)
 
