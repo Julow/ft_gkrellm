@@ -14,7 +14,9 @@ all: $(NAME)
 
 o/Core.cpp.o: srcs/Core.cpp h/Core.hpp
 	@$(COMPILE)
-o/main.cpp.o: srcs/main.cpp h/ft_gk.h h/Core.hpp
+o/HostModule.cpp.o: srcs/HostModule.cpp
+	@$(COMPILE)
+o/main.cpp.o: srcs/main.cpp h/ft_gk.h h/Core.hpp h/NCursesDisplay.hpp
 	@$(COMPILE)
 o/NCursesDisplay.cpp.o: srcs/NCursesDisplay.cpp h/NCursesDisplay.hpp
 	@$(COMPILE)
@@ -25,6 +27,7 @@ MSG_1 := printf '\033[0;31m%-23.23s\033[0;0m\n'
 COMPILE = $(MSG_0) $< ; $(CC) $(FLAGS) $(HEADS) -c -o $@ $< || $(MSG_1) $<
 
 O_FILES := o/Core.cpp.o \
+		o/HostModule.cpp.o \
 		o/main.cpp.o \
 		o/NCursesDisplay.cpp.o
 

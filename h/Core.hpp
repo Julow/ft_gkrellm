@@ -27,7 +27,11 @@ public:
 	Core(void);
 	virtual ~Core(void);
 
-	void							loadMobule(IMonitorModule *module);
+	void							loadModule(IMonitorModule *module);
+	void							loadDisplay(IMonitorDisplay *display);
+
+	void							removeModule(std::string const & moduleName);
+	void							removeDisplay(std::string const & displayName);
 
 	void							start(void);
 
