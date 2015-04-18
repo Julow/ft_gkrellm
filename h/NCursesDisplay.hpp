@@ -13,15 +13,18 @@
 #ifndef NCURSESDISPLAY_HPP
 # define NCURSESDISPLAY_HPP
 
-// # include <ostream>
-// # include <string>
-// # include <exception>
+# include "IMonitorDisplay.hpp"
+# include <iostream>
+# include "Core.hpp"
 
-class	NCursesDisplay
+class	NCursesDisplay : public IMonitorDisplay
 {
 public:
 	NCursesDisplay(void);
 	virtual ~NCursesDisplay(void);
+
+	virtual void						refresh(Core &core);
+	virtual const char* 				getName() const;
 
 protected:
 
