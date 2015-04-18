@@ -14,8 +14,11 @@
 #include "Core.hpp"
 #include "NCursesDisplay.hpp"
 #include "HostModule.hpp"
+<<<<<<< HEAD
 #include "CpuModule.hpp"
+=======
 #include <iostream>
+>>>>>>> d7337c7eec513d24cbf79bdbe68f0b204228811f
 
 int				main(int argc, char **argv)
 {

@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/18 15:22:52 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/18 18:13:49 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/18 18:41:20 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,9 @@ const char			*HostModule::getName(void) const
 	return ("HostModule");
 }
 
-int					HostModule::getWidth(void) const
-{
-	return (WIN_WIDTH);
-}
-
 int					HostModule::getHeight(void) const
 {
-	return (2);
+	return (3);
 }
 
 void				HostModule::refresh(void)
@@ -43,6 +38,5 @@ void				HostModule::refresh(void)
 
 void				HostModule::display(IMonitorDisplay *display, int y)
 {
-	display->print(0, y, "Hostname: ");
-	display->print(10, y, _hostname);
+	display->print(-1, y + 1, _hostname, F_CENTER);
 }

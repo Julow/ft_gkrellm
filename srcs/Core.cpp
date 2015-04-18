@@ -6,11 +6,13 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/18 13:04:51 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/18 18:03:49 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/18 18:43:45 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Core.hpp"
+#include "IMonitorDisplay.hpp"
+#include "IMonitorModule.hpp"
 #include "NCursesDisplay.hpp"
 #include <unistd.h>
 
@@ -50,7 +52,7 @@ void							Core::loadDisplay(IMonitorDisplay *display)
 
 void							Core::removeModule(std::string const & moduleName)
 {
-	std::vector<IMonitorModule *>::const_iterator			it;
+	std::vector<IMonitorModule*>::const_iterator	it;
 
 	it = _modules.begin();
 	while (it != _modules.end())
@@ -66,7 +68,7 @@ void							Core::removeModule(std::string const & moduleName)
 
 void							Core::removeDisplay(std::string const & displayName)
 {
-	std::vector<IMonitorDisplay *>::const_iterator			it;
+	std::vector<IMonitorDisplay*>::const_iterator	it;
 
 	it = _displays.begin();
 	while (it != _displays.end())
@@ -84,14 +86,14 @@ std::vector<IMonitorModule*>	&Core::getModules(void)
 
 void							Core::_update(void)
 {
-	std::cerr << "Updating displays ..." << std::endl;
-	std::vector<IMonitorDisplay *>::const_iterator		it;
+	std::vector<IMonitorDisplay*>::const_iterator	it;
 
 	it = _displays.begin();
 	while (it != _displays.end())
 	{
 		if (!(*it)->update())
 		{
+			delete *it;
 			_displays.erase(it);
 			_update();
 			return ;
@@ -102,13 +104,11 @@ void							Core::_update(void)
 
 void							Core::_refresh(void)
 {
-	std::cerr << "Refreshing modules ..." << std::endl;
 	std::vector<IMonitorModule *>::const_iterator		it;
 
 	it = _modules.begin();
 	while (it != _modules.end())
 	{
-		std::cerr << "Refreshing [" << (*it)->getName() << "]" << std::endl;
 		(*it)->refresh();
 		++it;
 	}
@@ -118,11 +118,9 @@ void							Core::_display(void)
 {
 	std::vector<IMonitorDisplay *>::const_iterator		it;
 
-	std::cerr << "Displaying modules ..." << std::endl;
 	it = _displays.begin();
 	while (it != _displays.end())
 	{
-		std::cerr << "Displaying on [" << (*it)->getName() << "]" << std::endl;
 		(*it)->display();
 		++it;
 	}
