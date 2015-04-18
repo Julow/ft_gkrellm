@@ -20,7 +20,8 @@ class	IMonitorDisplay
 public:
 	virtual ~IMonitorDisplay(void){}
 
-	virtual void			refresh(Gkrellm &gk) = 0;
+	virtual void						refresh(Core &core) = 0;
+	virtual std::string const & 		getName() = 0;
 
 protected:
 

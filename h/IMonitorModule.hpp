@@ -26,7 +26,7 @@ public:
 	virtual int					getWidth(void) const = 0;
 	virtual int					getHeight(void) const = 0;
 
-	virtual void				refresh(Gkrellm &gk) = 0;
+	virtual void				refresh(Core &core) = 0;
 
 protected:
 

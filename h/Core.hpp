@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Gkrellm.hpp                                        :+:      :+:    :+:   */
+/*   Core.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,21 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GKRELLM_HPP
-# define GKRELLM_HPP
+#ifndef CORE_HPP
+# define CORE_HPP
 
 // # include <ostream>
 // # include <string>
 // # include <exception>
+# include <iostream>
 # include <vector>
 # include "IMonitorDisplay.hpp"
 # include "IMonitorModule.hpp"
 
-class	Gkrellm
+class	Core
 {
 public:
-	Gkrellm(void);
-	virtual ~Gkrellm(void);
+	Core(void);
+	virtual ~Core(void);
 
 	void							loadMobule(IMonitorModule *module);
 
@@ -33,15 +34,17 @@ public:
 	std::vector<IMonitorModule*>	&getModules(void);
 
 protected:
-	std::vector<IMonitorDisplay*>	_display;
+	std::vector<IMonitorDisplay*>	_displays;
 
 	std::vector<IMonitorModule*>	_modules;
+	void							refreshModules(void);
+	void							displayModules(void);
 
 private:
-	Gkrellm(Gkrellm const &src);
-	Gkrellm			&operator=(Gkrellm const &rhs);
+	Core(Core const &src);
+	Core			&operator=(Core const &rhs);
 };
 
-// std::ostream		&operator<<(std::ostream &o, Gkrellm const &rhs);
+// std::ostream		&operator<<(std::ostream &o, Core const &rhs);
 
 #endif

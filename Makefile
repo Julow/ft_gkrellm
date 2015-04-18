@@ -12,17 +12,17 @@ HEADS := -Ih
 
 all: $(NAME)
 
-o/Gkrellm.cpp.o: srcs/Gkrellm.cpp h/Gkrellm.hpp
+o/Core.cpp.o: srcs/Core.cpp h/Core.hpp
 	@$(COMPILE)
-o/main.cpp.o: srcs/main.cpp h/ft_gk.h h/Gkrellm.hpp
+o/main.cpp.o: srcs/main.cpp h/ft_gk.h
 	@$(COMPILE)
 
-MSG_0 := printf '\033[0;32m%-16.16s\033[0;0m\r'
-MSG_1 := printf '\033[0;31m%-16.16s\033[0;0m\n'
+MSG_0 := printf '\033[0;32m%-13.13s\033[0;0m\r'
+MSG_1 := printf '\033[0;31m%-13.13s\033[0;0m\n'
 
 COMPILE = $(MSG_0) $< ; $(CC) $(FLAGS) $(HEADS) -c -o $@ $< || $(MSG_1) $<
 
-O_FILES := o/Gkrellm.cpp.o \
+O_FILES := o/Core.cpp.o \
 		o/main.cpp.o
 
 $(NAME): o/ $(LIBS) $(O_FILES)

@@ -18,7 +18,7 @@
 class	IMonitorDisplay;
 class	IMonitorModule;
 
-class	Gkrellm;
+class	Core;
 
 class	NCursesDisplay;
 class	GtkDisplay;

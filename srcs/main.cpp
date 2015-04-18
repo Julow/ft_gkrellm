@@ -11,13 +11,13 @@
 /* ************************************************************************** */
 
 #include "ft_gk.h"
-#include "Gkrellm.hpp"
+#include "Core.hpp"
 
 int				main(int argc, char **argv)
 {
-	Gkrellm			gkrellm;
+	Core			core;
 
-	gkrellm.start();
+	core.start();
 	IGNORE(argc);
 	IGNORE(argv);
 	return (0);
