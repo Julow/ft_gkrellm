@@ -14,6 +14,7 @@
 #include "Core.hpp"
 #include "NCursesDisplay.hpp"
 #include "HostModule.hpp"
+#include "CpuModule.hpp"
 
 int				main(int argc, char **argv)
 {
@@ -22,11 +23,8 @@ int				main(int argc, char **argv)
 	try
 	{
 		core.loadDisplay(new NCursesDisplay(&core));
-		core.loadDisplay(new NCursesDisplay(&core));
 		core.loadModule(new HostModule(&core));
-		core.loadModule(new HostModule(&core));
-		core.loadModule(new HostModule(&core));
-		core.loadModule(new HostModule(&core));
+		core.loadModule(new CpuModule(&core));
 		core.start();
 	}
 	catch (std::exception &e)
