@@ -56,3 +56,49 @@ void					Core::start(void)
 		this->displayModules();
 	}
 }
+
+void					Core::loadModule(IMonitorModule *module)
+{
+	if (module)
+	{
+		this->_modules.push_back(module);
+	}
+}
+
+void					Core::loadDisplay(IMonitorDisplay *display)
+{
+	if (display)
+	{
+		this->_displays.push_back(display);
+	}
+}
+
+void					Core::removeModule(std::string const & moduleName)
+{
+	std::vector<IMonitorModule *>::const_iterator			it;
+
+	it = this->_modules.begin();
+	while (it != this->_modules.end())
+	{
+		if ((*it)->getName() == moduleName)
+		{
+			this->_modules.erase(it);
+		}
+		++it;
+	}
+}
+
+void					Core::removeDisplay(std::string const & displayName)
+{
+	std::vector<IMonitorDisplay *>::const_iterator			it;
+
+	it = this->_displays.begin();
+	while (it != this->_displays.end())
+	{
+		if ((*it)->getName() == displayName)
+		{
+			this->_displays.erase(it);
+		}
+		++it;
+	}
+}

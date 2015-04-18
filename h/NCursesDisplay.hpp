@@ -24,13 +24,13 @@ public:
 	virtual ~NCursesDisplay(void);
 
 	virtual void						refresh(Core &core);
-	virtual const char* 				getName() const;
+	virtual const char* 				getName(void) const;
 
 protected:
 
 private:
 	NCursesDisplay(NCursesDisplay const &src);
-	NCursesDisplay					&operator=(NCursesDisplay const &rhs);
+	NCursesDisplay						&operator=(NCursesDisplay const &rhs);
 };
 
 #endif

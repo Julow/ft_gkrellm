@@ -22,7 +22,7 @@ public:
 	virtual ~IMonitorDisplay(void){}
 
 	virtual void						refresh(Core &core) = 0;
-	virtual const char* 				getName() const = 0;
+	virtual const char* 				getName(void) const = 0;
 
 protected:
 

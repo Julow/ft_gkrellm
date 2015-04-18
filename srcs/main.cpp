@@ -12,11 +12,14 @@
 
 #include "ft_gk.h"
 #include "Core.hpp"
+#include "NCursesDisplay.hpp"
 
 int				main(int argc, char **argv)
 {
 	Core			core;
+	NCursesDisplay	d1;
 
+	core.loadDisplay(&d1);
 	core.start();
 	IGNORE(argc);
 	IGNORE(argv);
