@@ -11,8 +11,8 @@
 /* ************************************************************************** */
 
 #include "CpuModule.hpp"
-# include <sys/types.h>
-# include <sys/sysctl.h>
+#include <sys/types.h>
+#include <sys/sysctl.h>
 #include <sstream>
 
 CpuModule::CpuModule(Core *core)
@@ -41,7 +41,6 @@ int					CpuModule::getHeight(void) const
 
 void				CpuModule::refresh(void)
 {
-
 	long			data;
 	size_t			len;
 	char			str[1048];
@@ -65,7 +64,8 @@ void				CpuModule::display(IMonitorDisplay *display, int y)
 {
 	std::ostringstream			oss;
 
-	display->print(0, y, this->_cpuName, F_CENTER);
+	display->print(-1, y, this->_cpuName, F_CENTER);
+	y++;
 	display->print(0, y + 1, "Nb coeurs:", 0);
 	oss << this->_ncpu;
 	display->print(15, y + 1, oss.str(), 0);

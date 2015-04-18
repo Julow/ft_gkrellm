@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "HostModule.hpp"
+#include <sys/types.h>
+#include <sys/sysctl.h>
 
 HostModule::HostModule(Core *core)
 	: _core(core), _hostname("")
@@ -33,7 +35,12 @@ int					HostModule::getHeight(void) const
 
 void				HostModule::refresh(void)
 {
-	_hostname = "lol";
+	size_t			len;
+	char			str[1048];
+
+	len = 1048;
+	sysctlbyname("kern.hostname", str, &len, NULL, 0);
+	_hostname = str;
 }
 
 void				HostModule::display(IMonitorDisplay *display, int y)
