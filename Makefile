@@ -22,6 +22,8 @@ o/main.cpp.o: srcs/main.cpp h/ft_gk.h h/Core.hpp h/NCursesDisplay.hpp h/HostModu
 	@$(COMPILE)
 o/NCursesDisplay.cpp.o: srcs/NCursesDisplay.cpp h/NCursesDisplay.hpp h/IMonitorModule.hpp h/Core.hpp
 	@$(COMPILE)
+o/Stats.cpp.o: srcs/Stats.cpp h/Stats.hpp
+	@$(COMPILE)
 
 MSG_0 := printf '\033[0;32m%-23.23s\033[0;0m\r'
 MSG_1 := printf '\033[0;31m%-23.23s\033[0;0m\n'
@@ -32,7 +34,8 @@ O_FILES := o/Core.cpp.o \
 		o/CpuModule.cpp.o \
 		o/HostModule.cpp.o \
 		o/main.cpp.o \
-		o/NCursesDisplay.cpp.o
+		o/NCursesDisplay.cpp.o \
+		o/Stats.cpp.o
 
 $(NAME): o/ $(LIBS) $(O_FILES)
 	@$(MSG_0) $@ ; $(CC) $(FLAGS) -o $@ $(O_FILES) $(LINKS) && echo || $(MSG_1) $@

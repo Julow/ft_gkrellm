@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/18 13:04:51 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/18 18:43:45 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/19 12:51:13 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "IMonitorModule.hpp"
 #include "NCursesDisplay.hpp"
 #include <unistd.h>
+#include <cstdlib>
 
 Core::Core(void)
 {
@@ -27,14 +28,19 @@ Core::~Core(void)
 
 void							Core::start(void) throw (std::runtime_error)
 {
+	clock_t							lastUpdate;
+
+	lastUpdate = 0;
 	while (1)
 	{
+		while ((clock() - lastUpdate) < CLOCKS_PER_SEC)
+			;
+		lastUpdate = clock();
 		_refresh();
 		_update();
 		if (_displays.size() <= 0 || _modules.size() <= 0)
 			throw std::runtime_error("Nothing to display");
 		_display();
-		sleep(1);
 	}
 }
 
@@ -52,7 +58,7 @@ void							Core::loadDisplay(IMonitorDisplay *display)
 
 void							Core::removeModule(std::string const & moduleName)
 {
-	std::vector<IMonitorModule*>::const_iterator	it;
+	std::list<IMonitorModule*>::const_iterator	it;
 
 	it = _modules.begin();
 	while (it != _modules.end())
@@ -79,15 +85,21 @@ void							Core::removeDisplay(std::string const & displayName)
 	}
 }
 
-std::vector<IMonitorModule*>	&Core::getModules(void)
+std::list<IMonitorModule*>		&Core::getModules(void)
 {
 	return (_modules);
+}
+
+Stats const						&Core::getStats(void) const
+{
+	return (_stats);
 }
 
 void							Core::_update(void)
 {
 	std::vector<IMonitorDisplay*>::const_iterator	it;
 
+	_stats.update();
 	it = _displays.begin();
 	while (it != _displays.end())
 	{
@@ -104,7 +116,7 @@ void							Core::_update(void)
 
 void							Core::_refresh(void)
 {
-	std::vector<IMonitorModule *>::const_iterator		it;
+	std::list<IMonitorModule *>::const_iterator		it;
 
 	it = _modules.begin();
 	while (it != _modules.end())
