@@ -62,15 +62,21 @@ bool						SfmlDisplay::update(void)
 
 void						SfmlDisplay::display(void)
 {
-	this->clear();
-
 	int			y = 0;
 	std::vector<IMonitorModule*>::iterator it = _core->getModules().begin();
 	std::vector<IMonitorModule*>::iterator end = _core->getModules().end();
 
+	this->clear();
 	it += _scrollY;
 	for (; it != end; ++it)
 	{
+		sf::RectangleShape			rectangle(sf::Vector2f(WIN_WIDTH * CHAR_WIDTH, 3 * CHAR_WIDTH));
+		rectangle.setPosition(0, y * CHAR_WIDTH);
+		rectangle.setFillColor(sf::Color::Blue);
+		this->draw(rectangle);
+		this->print(-1, y + 1, (*it)->getName(), F_CENTER);
+		y += 3;
+
 		(*it)->display(this, y);
 		y += (*it)->getHeight();
 	}

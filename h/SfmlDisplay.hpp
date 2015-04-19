@@ -21,7 +21,7 @@
 # include <SFML/Graphics.hpp>
 
 # define CHAR_WIDTH				12
-# define WIN_HEIGHT				70
+# define WIN_HEIGHT				100
 
 class	SfmlDisplay : public sf::RenderWindow, public IMonitorDisplay
 {
