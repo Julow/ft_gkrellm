@@ -2,13 +2,13 @@
 
 NAME := ft_gkrellm
 C_DIR := srcs
-H_DIRS := h
+H_DIRS := h SFML/include
 O_DIR := o
 LIBS := 
 CC := clang++
 FLAGS := -Wall -g
 LINKS := -framework sfml-graphics -framework sfml-window -framework sfml-system -F SFML/Frameworks -lncurses
-HEADS := -Ih 
+HEADS := -Ih -ISFML/include
 
 all: $(NAME)
 
@@ -38,6 +38,8 @@ o/OsInfoModule.cpp.o: srcs/OsInfoModule.cpp h/OsInfoModule.hpp
 	@$(COMPILE)
 o/ProcessModule.cpp.o: srcs/ProcessModule.cpp h/ProcessModule.hpp h/Core.hpp
 	@$(COMPILE)
+o/SfmlDisplay.cpp.o: srcs/SfmlDisplay.cpp h/SfmlDisplay.hpp h/IMonitorModule.hpp h/Core.hpp
+	@$(COMPILE)
 o/Stats.cpp.o: srcs/Stats.cpp h/Stats.hpp
 	@$(COMPILE)
 o/TimeModule.cpp.o: srcs/TimeModule.cpp h/TimeModule.hpp
@@ -61,6 +63,7 @@ O_FILES := o/CatModule.cpp.o \
 		o/NetworkModule.cpp.o \
 		o/OsInfoModule.cpp.o \
 		o/ProcessModule.cpp.o \
+		o/SfmlDisplay.cpp.o \
 		o/Stats.cpp.o \
 		o/TimeModule.cpp.o
 
