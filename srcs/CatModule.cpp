@@ -21,7 +21,7 @@
 #include <ctime>
 
 CatModule::CatModule(Core *core)
-	: _core(core)
+	: _core(core), _x(15)
 {
 }
 
@@ -48,19 +48,18 @@ void				CatModule::display(IMonitorDisplay *display, int y)
 {
 	int				i;
 	int				rn;
-	static int		x = 0;
 
 	rn = rand() % 4;
 	i = ( 8 * rn);
 	if (rn == 0)
-		x -= 5;
+		_x -= 8;
 	else if (rn == 1)
-		x += 5;
-	if (x > 30 || x < 0)
-		x = 0;
+		_x += 8;
+	if (_x > 36 || _x < 0)
+		_x = 15;
 	while (i < (8 * (rn + 1)))
 	{
-		display->print(x, y + i - (8 * rn), this->_cats[i], 0);		
+		display->print(_x, y + i - (8 * rn), this->_cats[i], 0);		
 		i++;
 	}
 }

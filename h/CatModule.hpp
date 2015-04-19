@@ -34,6 +34,7 @@ protected:
 	Core										*_core;
 
 	static const char							*_cats[];
+	int											_x;
 
 private:
 	CatModule(CatModule const &src);
