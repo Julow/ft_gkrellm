@@ -12,6 +12,8 @@ HEADS := -Ih
 
 all: $(NAME)
 
+o/CatModule.cpp.o: srcs/CatModule.cpp h/CatModule.hpp
+	@$(COMPILE)
 o/Core.cpp.o: srcs/Core.cpp h/Core.hpp h/IMonitorDisplay.hpp h/IMonitorModule.hpp h/NCursesDisplay.hpp
 	@$(COMPILE)
 o/CpuModule.cpp.o: srcs/CpuModule.cpp h/CpuModule.hpp
@@ -34,7 +36,8 @@ MSG_1 := printf '\033[0;31m%-23.23s\033[0;0m\n'
 
 COMPILE = $(MSG_0) $< ; $(CC) $(FLAGS) $(HEADS) -c -o $@ $< || $(MSG_1) $<
 
-O_FILES := o/Core.cpp.o \
+O_FILES := o/CatModule.cpp.o \
+		o/Core.cpp.o \
 		o/CpuModule.cpp.o \
 		o/HostModule.cpp.o \
 		o/main.cpp.o \
