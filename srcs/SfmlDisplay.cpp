@@ -6,7 +6,7 @@
 /*   By: olysogub <olysogub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/18 15:12:03 by olysogub          #+#    #+#             */
-/*   Updated: 2015/04/19 16:03:19 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/19 19:28:34 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ bool						SfmlDisplay::update(void)
 				_scrollY++;
 				this->display();
 			}
+			else if (event.key.code == sf::Keyboard::Q)
+				this->close();
 		}
 	if (!this->isOpen())
 		return (false);
