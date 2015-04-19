@@ -17,10 +17,14 @@
 #include <vector>
 
 SfmlDisplay::SfmlDisplay(Core *core) throw(std::runtime_error)
-	: sf::RenderWindow(sf::VideoMode(CHAR_WIDTH * WIN_WIDTH, CHAR_WIDTH * WIN_HEIGHT), "ft_gkrellm"), _core(core), _scrollY(0)
+	: sf::RenderWindow(sf::VideoMode(CHAR_WIDTH * WIN_WIDTH, CHAR_WIDTH * WIN_HEIGHT), "ft_gkrellm"), _core(core), _scrollY(0), _im()
 {
+
 	if(!_font.loadFromFile("font1.ttf"))
 		throw std::runtime_error("Can not load font !");
+	if (!_im.loadFromFile("background1.jpg"))
+		throw std::runtime_error("Can not load background !");
+
 	_text = sf::Text("A", _font, CHAR_WIDTH);
 }
 
@@ -64,18 +68,33 @@ bool						SfmlDisplay::update(void)
 
 void						SfmlDisplay::display(void)
 {
-	this->clear();
-
 	int			y = 0;
 	std::vector<IMonitorModule*>::iterator it = _core->getModules().begin();
 	std::vector<IMonitorModule*>::iterator end = _core->getModules().end();
 
+	this->clear();
+
+	sf::Texture texture;
+	texture.loadFromImage(this->_im);
+	this->_background.setTexture(texture, true);
+	this->_background.setPosition(0, 0);
+
+	this->draw(this->_background);
 	it += _scrollY;
 	for (; it != end; ++it)
 	{
+		sf::RectangleShape			rectangle(sf::Vector2f(WIN_WIDTH * CHAR_WIDTH, 3 * CHAR_WIDTH));
+		rectangle.setPosition(0, y * CHAR_WIDTH);
+		rectangle.setFillColor(sf::Color(52, 152, 219, 64));
+		this->draw(rectangle);
+		this->print(-1, y + 1, (*it)->getName(), F_CENTER);
+		y += 3;
+
 		(*it)->display(this, y);
 		y += (*it)->getHeight();
 	}
+
+
 	sf::RenderWindow::display();
 	return ;
 }
