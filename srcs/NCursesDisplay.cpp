@@ -19,6 +19,7 @@
 NCursesDisplay::NCursesDisplay(Core *core) throw(std::runtime_error)
 	: _core(core)
 {
+
 	NCursesDisplay::init();
 	_win = newwin(0, WIN_WIDTH + 2, 0, NCursesDisplay::_winCount * (WIN_WIDTH + 1));
 	if (_win == NULL)
@@ -57,16 +58,23 @@ void						NCursesDisplay::display(void)
 	std::list<IMonitorModule*>::iterator end = _core->getModules().end();
 
 	wclear(_win);
+
 	for (; it != end; ++it)
 	{
 		wmove(_win, y++, 1);
+		wattron(_win, COLOR_PAIR(1));
 		whline(_win, '=', WIN_WIDTH);
+		wattron(_win, COLOR_PAIR(2));
 		print(-1, y++, (*it)->getName(), F_CENTER);
+		wattroff(_win, COLOR_PAIR(2));
 		wmove(_win, y++, 1);
+		wattron(_win, COLOR_PAIR(3));
 		whline(_win, '-', WIN_WIDTH);
+		wattroff(_win, COLOR_PAIR(3));
 		(*it)->display(this, y);
 		y += (*it)->getHeight();
 	}
+	wattron(_win, COLOR_PAIR(3));
 	wborder(_win, '|', '|', '=', '=', '+', '+', '+', '+');
 	wrefresh(_win);
 }
@@ -97,6 +105,10 @@ void						NCursesDisplay::init(void)
 		noecho();
 		curs_set(0);
 		NCursesDisplay::_initied = true;
+		start_color();
+		init_pair(1, COLOR_GREEN, COLOR_BLACK);
+		init_pair(2, COLOR_YELLOW, COLOR_BLACK);
+		init_pair(3, COLOR_GREEN, COLOR_BLACK);
 	}
 }
 

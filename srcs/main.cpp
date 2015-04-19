@@ -21,6 +21,7 @@
 #include "ProcessModule.hpp"
 #include "NetworkModule.hpp"
 #include "LoadModule.hpp"
+#include "CatModule.hpp"
 #include <iostream>
 
 int				main(int argc, char **argv)
@@ -39,6 +40,7 @@ int				main(int argc, char **argv)
 		core.loadModule(new DiskModule(&core));
 		core.loadModule(new ProcessModule(&core));
 		core.loadModule(new NetworkModule(&core));
+		core.loadModule(new CatModule(&core));
 		core.start();
 	}
 	catch (std::exception &e)

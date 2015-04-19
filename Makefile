@@ -12,6 +12,8 @@ HEADS := -Ih
 
 all: $(NAME)
 
+o/CatModule.cpp.o: srcs/CatModule.cpp h/CatModule.hpp
+	@$(COMPILE)
 o/Core.cpp.o: srcs/Core.cpp h/Core.hpp h/IMonitorDisplay.hpp h/IMonitorModule.hpp h/NCursesDisplay.hpp
 	@$(COMPILE)
 o/CpuModule.cpp.o: srcs/CpuModule.cpp h/CpuModule.hpp
@@ -22,7 +24,7 @@ o/HostModule.cpp.o: srcs/HostModule.cpp h/HostModule.hpp
 	@$(COMPILE)
 o/LoadModule.cpp.o: srcs/LoadModule.cpp h/LoadModule.hpp h/Core.hpp
 	@$(COMPILE)
-o/main.cpp.o: srcs/main.cpp h/ft_gk.h h/Core.hpp h/NCursesDisplay.hpp h/HostModule.hpp h/CpuModule.hpp h/TimeModule.hpp h/OsInfoModule.hpp h/DiskModule.hpp h/ProcessModule.hpp h/NetworkModule.hpp h/LoadModule.hpp
+o/main.cpp.o: srcs/main.cpp h/ft_gk.h h/Core.hpp h/NCursesDisplay.hpp h/HostModule.hpp h/CpuModule.hpp h/TimeModule.hpp h/OsInfoModule.hpp h/DiskModule.hpp h/ProcessModule.hpp h/NetworkModule.hpp h/LoadModule.hpp h/CatModule.hpp
 	@$(COMPILE)
 o/NCursesDisplay.cpp.o: srcs/NCursesDisplay.cpp h/NCursesDisplay.hpp h/IMonitorModule.hpp h/Core.hpp
 	@$(COMPILE)
@@ -42,7 +44,8 @@ MSG_1 := printf '\033[0;31m%-23.23s\033[0;0m\n'
 
 COMPILE = $(MSG_0) $< ; $(CC) $(FLAGS) $(HEADS) -c -o $@ $< || $(MSG_1) $<
 
-O_FILES := o/Core.cpp.o \
+O_FILES := o/CatModule.cpp.o \
+		o/Core.cpp.o \
 		o/CpuModule.cpp.o \
 		o/DiskModule.cpp.o \
 		o/HostModule.cpp.o \
