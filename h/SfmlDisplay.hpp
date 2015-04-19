@@ -24,7 +24,7 @@
 class	SfmlDisplay : public sf::RenderWindow, public IMonitorDisplay
 {
 public:
-	SfmlDisplay(Core *core);
+	SfmlDisplay(Core *core) throw(std::runtime_error);
 	virtual ~SfmlDisplay(void);
 
 	virtual const char* 		getName(void) const;
@@ -38,6 +38,7 @@ public:
 
 protected:
 	Core						*_core;
+	sf::Font					font;
 
 
 private:

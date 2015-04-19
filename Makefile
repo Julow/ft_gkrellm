@@ -24,7 +24,7 @@ o/HostModule.cpp.o: srcs/HostModule.cpp h/HostModule.hpp
 	@$(COMPILE)
 o/LoadModule.cpp.o: srcs/LoadModule.cpp h/LoadModule.hpp h/Core.hpp
 	@$(COMPILE)
-o/main.cpp.o: srcs/main.cpp h/ft_gk.h h/Core.hpp h/NCursesDisplay.hpp h/HostModule.hpp h/CpuModule.hpp h/TimeModule.hpp h/OsInfoModule.hpp h/DiskModule.hpp h/ProcessModule.hpp h/NetworkModule.hpp h/LoadModule.hpp h/CatModule.hpp h/MemModule.hpp h/MemActivityModule.hpp
+o/main.cpp.o: srcs/main.cpp h/ft_gk.h h/Core.hpp h/NCursesDisplay.hpp h/SfmlDisplay.hpp h/HostModule.hpp h/CpuModule.hpp h/TimeModule.hpp h/OsInfoModule.hpp h/DiskModule.hpp h/ProcessModule.hpp h/NetworkModule.hpp h/LoadModule.hpp h/CatModule.hpp h/MemModule.hpp h/MemActivityModule.hpp
 	@$(COMPILE)
 o/MemActivityModule.cpp.o: srcs/MemActivityModule.cpp h/MemActivityModule.hpp h/Core.hpp
 	@$(COMPILE)
@@ -82,7 +82,7 @@ clean:
 
 fclean: clean
 	@rm -f ft_gkrellm 2> /dev/null || true
-	@rm -rf SFML
+	@rm -rf SFML || true
 
 re: fclean all
 

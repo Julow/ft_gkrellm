@@ -16,13 +16,11 @@
 #include <ncurses.h>
 #include <vector>
 
-SfmlDisplay::SfmlDisplay(Core *core)
+SfmlDisplay::SfmlDisplay(Core *core) throw(std::runtime_error)
 	: sf::RenderWindow(sf::VideoMode(800, 800), "ft_gkrellm"), _core(core)
 {
-	sf::Text 	tx;
-	tx.setString("Hello world !");
-	this->draw(tx);
-	this->display();
+	if(!font.loadFromFile("font1.ttf"))
+		throw std::runtime_error("Can not load font !");
 }
 
 SfmlDisplay::~SfmlDisplay(void)
@@ -37,11 +35,30 @@ const char* 				SfmlDisplay::getName(void) const
 
 bool						SfmlDisplay::update(void)
 {
+	sf::Event event;
+
+	if (!this->isOpen())
+	{
+		return (false);
+	}
+	while (this->pollEvent(event))
+	{
+		// Request for closing the window
+		if (event.type == sf::Event::Closed)
+		{
+			this->close();
+			return (false);
+		}
+	}
 	return true;
 }
 
 void						SfmlDisplay::display(void)
 {
+	this->clear();
+
+
+	sf::RenderWindow::display();
 	return ;
 }
 
