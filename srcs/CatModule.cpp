@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/18 15:22:52 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/19 15:58:00 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/19 16:47:50 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ CatModule::~CatModule(void)
 
 const char			*CatModule::getName(void) const
 {
-	return ("CatModule");
+	return ("Cat");
 }
 
 int					CatModule::getHeight(void) const

@@ -7,7 +7,7 @@
 #    By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/04/07 22:29:29 by jaguillo          #+#    #+#              #
-#    Updated: 2015/04/12 00:41:47 by jaguillo         ###   ########.fr        #
+#    Updated: 2015/04/19 16:45:36 by jaguillo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -158,7 +158,7 @@ COMPILE = \$(MSG_0) \$< ; \$(CC) \$(FLAGS) \$(HEADS) -c -o \$@ \$< || \$(MSG_1) 
 
 O_FILES := $O_FILES
 
-\$(NAME):`echo "$O_DIRS" | tr ' ' '\n' | sort -u | tr '\n' ' '`\$(LIBS) \$(O_FILES)
+\$(NAME): SFML`echo "$O_DIRS" | tr ' ' '\n' | sort -u | tr '\n' ' '`\$(LIBS) \$(O_FILES)
 	@\$(MSG_0) \$@ ; \$(CC) \$(FLAGS) -o \$@ \$(O_FILES) \$(LINKS) && echo || \$(MSG_1) \$@
 
 $O_DIR/:
@@ -175,6 +175,14 @@ fclean: clean
 	@rm -f $NAME 2> /dev/null || true
 
 re: fclean all
+
+SFML:
+	@curl -o \"SFML.tar.gz\" \"http://mirror0.sfml-dev.org/files/SFML-2.2-osx-clang-universal.tar.gz\"
+	@mkdir SFML
+	@tar -xzf SFML.tar.gz -C SFML --strip-components=1
+	@mv SFML/extlibs/freetype.framework SFML/Frameworks/
+	@rm -f \"SFML.tar.gz\"
+	@echo \"----> \\033[0;32mexport DYLD_FRAMEWORK_PATH=\\\"\$(shell pwd)/SFML/Frameworks\\\"\"
 
 make:
 	@bash '$MAKEMAKE' re

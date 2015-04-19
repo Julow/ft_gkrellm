@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/18 13:05:34 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/19 15:55:33 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/19 16:51:49 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 #include "NetworkModule.hpp"
 #include "LoadModule.hpp"
 #include "CatModule.hpp"
+#include "MemModule.hpp"
+#include "MemActivityModule.hpp"
 #include <iostream>
 
 int				main(int argc, char **argv)
@@ -39,9 +41,8 @@ int				main(int argc, char **argv)
 		core.loadModule(new DiskModule(&core));
 		core.loadModule(new ProcessModule(&core));
 		core.loadModule(new NetworkModule(&core));
-		core.loadModule(new CatModule(&core));
-		core.loadModule(new CatModule(&core));
-		core.loadModule(new CatModule(&core));
+		core.loadModule(new MemModule(&core));
+		core.loadModule(new MemActivityModule(&core));
 		core.loadModule(new CatModule(&core));
 		core.start();
 	}
