@@ -13,6 +13,7 @@
 #include "ft_gk.h"
 #include "Core.hpp"
 #include "NCursesDisplay.hpp"
+#include "SfmlDisplay.hpp"
 #include "HostModule.hpp"
 #include "CpuModule.hpp"
 #include "TimeModule.hpp"
@@ -33,6 +34,7 @@ int				main(int argc, char **argv)
 	try
 	{
 		core.loadDisplay(new NCursesDisplay(&core));
+		core.loadDisplay(new SfmlDisplay(&core));
 		core.loadModule(new HostModule(&core));
 		core.loadModule(new CpuModule(&core));
 		core.loadModule(new TimeModule(&core));

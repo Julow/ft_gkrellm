@@ -2,13 +2,13 @@
 
 NAME := ft_gkrellm
 C_DIR := srcs
-H_DIRS := h
+H_DIRS := h SFML/include
 O_DIR := o
 LIBS := 
 CC := clang++
 FLAGS := -Wall -g
 LINKS := -framework sfml-graphics -framework sfml-window -framework sfml-system -F SFML/Frameworks -lncurses
-HEADS := -Ih 
+HEADS := -Ih -ISFML/include
 
 all: $(NAME)
 
@@ -24,7 +24,7 @@ o/HostModule.cpp.o: srcs/HostModule.cpp h/HostModule.hpp
 	@$(COMPILE)
 o/LoadModule.cpp.o: srcs/LoadModule.cpp h/LoadModule.hpp h/Core.hpp
 	@$(COMPILE)
-o/main.cpp.o: srcs/main.cpp h/ft_gk.h h/Core.hpp h/NCursesDisplay.hpp h/HostModule.hpp h/CpuModule.hpp h/TimeModule.hpp h/OsInfoModule.hpp h/DiskModule.hpp h/ProcessModule.hpp h/NetworkModule.hpp h/LoadModule.hpp h/CatModule.hpp h/MemModule.hpp h/MemActivityModule.hpp
+o/main.cpp.o: srcs/main.cpp h/ft_gk.h h/Core.hpp h/NCursesDisplay.hpp h/SfmlDisplay.hpp h/HostModule.hpp h/CpuModule.hpp h/TimeModule.hpp h/OsInfoModule.hpp h/DiskModule.hpp h/ProcessModule.hpp h/NetworkModule.hpp h/LoadModule.hpp h/CatModule.hpp h/MemModule.hpp h/MemActivityModule.hpp
 	@$(COMPILE)
 o/MemActivityModule.cpp.o: srcs/MemActivityModule.cpp h/MemActivityModule.hpp h/Core.hpp
 	@$(COMPILE)
@@ -37,6 +37,8 @@ o/NetworkModule.cpp.o: srcs/NetworkModule.cpp h/NetworkModule.hpp h/Core.hpp
 o/OsInfoModule.cpp.o: srcs/OsInfoModule.cpp h/OsInfoModule.hpp
 	@$(COMPILE)
 o/ProcessModule.cpp.o: srcs/ProcessModule.cpp h/ProcessModule.hpp h/Core.hpp
+	@$(COMPILE)
+o/SfmlDisplay.cpp.o: srcs/SfmlDisplay.cpp h/SfmlDisplay.hpp h/IMonitorModule.hpp h/Core.hpp
 	@$(COMPILE)
 o/Stats.cpp.o: srcs/Stats.cpp h/Stats.hpp
 	@$(COMPILE)
@@ -61,6 +63,7 @@ O_FILES := o/CatModule.cpp.o \
 		o/NetworkModule.cpp.o \
 		o/OsInfoModule.cpp.o \
 		o/ProcessModule.cpp.o \
+		o/SfmlDisplay.cpp.o \
 		o/Stats.cpp.o \
 		o/TimeModule.cpp.o
 
@@ -79,7 +82,7 @@ clean:
 
 fclean: clean
 	@rm -f ft_gkrellm 2> /dev/null || true
-	@rm -rf SFML
+	@rm -rf SFML || true
 
 re: fclean all
 

@@ -35,6 +35,7 @@ protected:
 
 	static const char							*_cats[];
 	int											_x;
+	int											_rn;
 
 private:
 	CatModule(void);

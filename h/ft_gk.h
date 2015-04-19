@@ -15,7 +15,8 @@
 
 # define IGNORE(a)		(static_cast<void>(a))
 
-# define FPS			(CLOCKS_PER_SEC / 2)
+# define REFRESH_TIME	(CLOCKS_PER_SEC)
+# define UPDATE_TIME	(CLOCKS_PER_SEC / 60)
 
 # define WIN_WIDTH		50
 
