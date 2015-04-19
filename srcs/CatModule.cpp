@@ -41,25 +41,23 @@ int					CatModule::getHeight(void) const
 
 void				CatModule::refresh(void)
 {
-
+	_rn = rand() % 4;
+	if (_rn == 0)
+		_x -= 8;
+	else if (_rn == 1)
+		_x += 8;
+	if (_x > 36 || _x < 0)
+		_x = 15;
 }
 
 void				CatModule::display(IMonitorDisplay *display, int y)
 {
 	int				i;
-	int				rn;
 
-	rn = rand() % 4;
-	i = ( 8 * rn);
-	if (rn == 0)
-		_x -= 8;
-	else if (rn == 1)
-		_x += 8;
-	if (_x > 36 || _x < 0)
-		_x = 15;
-	while (i < (8 * (rn + 1)))
+	i = ( 8 * _rn);
+	while (i < (8 * (_rn + 1)))
 	{
-		display->print(_x, y + i - (8 * rn), this->_cats[i], 0);		
+		display->print(_x, y + i - (8 * _rn), this->_cats[i], 0);		
 		i++;
 	}
 }

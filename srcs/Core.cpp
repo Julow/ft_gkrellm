@@ -28,19 +28,26 @@ Core::~Core(void)
 
 void							Core::start(void) throw (std::runtime_error)
 {
+	clock_t							lastRefresh;
 	clock_t							lastUpdate;
 
-	lastUpdate = -FPS;
+	lastRefresh = -REFRESH_TIME;
+	lastUpdate = -UPDATE_TIME;
 	while (1)
 	{
-		while ((clock() - lastUpdate) < FPS)
-			;
-		lastUpdate = clock();
-		_refresh();
-		_update();
-		if (_displays.size() <= 0 || _modules.size() <= 0)
-			throw std::runtime_error("Nothing to display");
-		_display();
+		if ((clock() - lastUpdate) >= UPDATE_TIME)
+		{
+			lastUpdate = clock();
+			_update();
+			if (_displays.size() <= 0 || _modules.size() <= 0)
+				throw std::runtime_error("Nothing to display");
+		}
+		if ((clock() - lastRefresh) >= REFRESH_TIME)
+		{
+			lastRefresh = clock();
+			_refresh();
+			_display();
+		}
 	}
 }
 
@@ -99,7 +106,6 @@ void							Core::_update(void)
 {
 	std::vector<IMonitorDisplay*>::const_iterator	it;
 
-	_stats.update();
 	it = _displays.begin();
 	while (it != _displays.end())
 	{
@@ -116,8 +122,9 @@ void							Core::_update(void)
 
 void							Core::_refresh(void)
 {
-	std::vector<IMonitorModule *>::const_iterator		it;
+	std::vector<IMonitorModule*>::const_iterator		it;
 
+	_stats.update();
 	it = _modules.begin();
 	while (it != _modules.end())
 	{

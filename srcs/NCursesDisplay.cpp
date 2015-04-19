@@ -52,8 +52,10 @@ bool						NCursesDisplay::update(void)
 		}
 		else if ((c == KEY_UP && _scrollY > 0)
 			|| (c == KEY_DOWN && (_scrollY + 1) < _core->getModules().size()))
+		{
 			_scrollY += (c == KEY_UP) ? -1 : 1;
-	getmaxyx(_win, _height, _width);
+			this->display();
+		}
 	return (true);
 }
 
@@ -63,6 +65,7 @@ void						NCursesDisplay::display(void)
 	std::vector<IMonitorModule*>::iterator it = _core->getModules().begin();
 	std::vector<IMonitorModule*>::iterator end = _core->getModules().end();
 
+	getmaxyx(_win, _height, _width);
 	wclear(_win);
 	it += _scrollY;
 	for (; it != end; ++it)

@@ -17,10 +17,11 @@
 #include <vector>
 
 SfmlDisplay::SfmlDisplay(Core *core) throw(std::runtime_error)
-	: sf::RenderWindow(sf::VideoMode(800, 800), "ft_gkrellm"), _core(core)
+	: sf::RenderWindow(sf::VideoMode(CHAR_WIDTH * WIN_WIDTH, CHAR_WIDTH * WIN_HEIGHT), "ft_gkrellm"), _core(core), _scrollY(0)
 {
-	if(!font.loadFromFile("font1.ttf"))
+	if(!_font.loadFromFile("font1.ttf"))
 		throw std::runtime_error("Can not load font !");
+	_text = sf::Text("A", _font, CHAR_WIDTH);
 }
 
 SfmlDisplay::~SfmlDisplay(void)
@@ -35,21 +36,27 @@ const char* 				SfmlDisplay::getName(void) const
 
 bool						SfmlDisplay::update(void)
 {
-	sf::Event event;
+	sf::Event					event;
 
-	if (!this->isOpen())
-	{
-		return (false);
-	}
 	while (this->pollEvent(event))
-	{
-		// Request for closing the window
 		if (event.type == sf::Event::Closed)
-		{
 			this->close();
-			return (false);
+		else if (event.type == sf::Event::KeyPressed)
+		{
+			if (event.key.code == sf::Keyboard::Up && _scrollY > 0)
+			{
+				_scrollY--;
+				this->display();
+			}
+			else if (event.key.code == sf::Keyboard::Down
+				&& (_scrollY + 1) < _core->getModules().size())
+			{
+				_scrollY++;
+				this->display();
+			}
 		}
-	}
+	if (!this->isOpen())
+		return (false);
 	return true;
 }
 
@@ -57,15 +64,34 @@ void						SfmlDisplay::display(void)
 {
 	this->clear();
 
+	int			y = 0;
+	std::vector<IMonitorModule*>::iterator it = _core->getModules().begin();
+	std::vector<IMonitorModule*>::iterator end = _core->getModules().end();
 
+	it += _scrollY;
+	for (; it != end; ++it)
+	{
+		(*it)->display(this, y);
+		y += (*it)->getHeight();
+	}
 	sf::RenderWindow::display();
 	return ;
 }
 
 void						SfmlDisplay::print(int x, int y, std::string const &data, int flags)
 {
-	IGNORE(x);
-	IGNORE(y);
-	IGNORE(data);
-	IGNORE(flags);
+	float						posX;
+	float						posY;
+	if (y >= WIN_HEIGHT)
+		return ;
+	posX = static_cast<float>(x * CHAR_WIDTH);
+	posY = static_cast<float>(y * CHAR_WIDTH);
+	_text.setString(data);
+	if (flags & F_CENTER)
+	{
+		float w = _text.findCharacterPos(data.size() - 1).x - _text.findCharacterPos(0).x;
+		posX = (CHAR_WIDTH * WIN_WIDTH - w) / 2;
+	}
+	_text.setPosition(posX, posY);
+	this->draw(_text);
 }

@@ -20,6 +20,8 @@
 # include <SFML/Window.hpp>
 # include <SFML/Graphics.hpp>
 
+# define CHAR_WIDTH				12
+# define WIN_HEIGHT				70
 
 class	SfmlDisplay : public sf::RenderWindow, public IMonitorDisplay
 {
@@ -34,12 +36,13 @@ public:
 
 	virtual void				print(int x, int y, std::string const &data, int flags);
 
-
-
 protected:
 	Core						*_core;
-	sf::Font					font;
 
+	int							_scrollY;
+
+	sf::Font					_font;
+	sf::Text					_text;
 
 private:
 	SfmlDisplay(SfmlDisplay const &src);
