@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/18 15:22:55 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/18 18:41:00 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/19 19:25:05 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ protected:
 	std::string					_time;
 
 private:
+	TimeModule(void);
 	TimeModule(TimeModule const &src);
 	TimeModule					&operator=(TimeModule const &rhs);
 };

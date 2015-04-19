@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/18 15:22:55 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/18 18:41:00 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/19 19:24:51 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ protected:
 	int											_rn;
 
 private:
+	CatModule(void);
 	CatModule(CatModule const &src);
 	CatModule					&operator=(CatModule const &rhs);
 };
