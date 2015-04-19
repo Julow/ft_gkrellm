@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/18 15:22:52 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/18 18:13:49 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/19 15:08:43 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ CpuModule::~CpuModule(void)
 
 const char			*CpuModule::getName(void) const
 {
-	return ("CpuModule");
+	return ("CPU");
 }
 
 int					CpuModule::getWidth(void) const
@@ -80,8 +80,5 @@ void				CpuModule::display(IMonitorDisplay *display, int y)
 	oss.clear();
 	oss << this->_cpuFrequency << " GHz";
 	display->print(15, y + 3, oss.str(), 0);
-
-	display->print(0, y + 4, "Activity:", 0);
-	display->print(15, y + 4, "TODO", 0);
 
 }

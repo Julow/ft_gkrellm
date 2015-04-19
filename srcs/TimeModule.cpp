@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/18 15:22:52 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/18 18:41:20 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/19 14:49:58 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ TimeModule::~TimeModule(void)
 
 const char			*TimeModule::getName(void) const
 {
-	return ("TimeModule");
+	return ("Time");
 }
 
 int					TimeModule::getHeight(void) const

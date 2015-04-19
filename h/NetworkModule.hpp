@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HostModule.hpp                                     :+:      :+:    :+:   */
+/*   NetworkModule.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/04/18 15:22:55 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/19 13:55:39 by jaguillo         ###   ########.fr       */
+/*   Created: 2015/04/19 13:46:36 by jaguillo          #+#    #+#             */
+/*   Updated: 2015/04/19 14:48:32 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HOSTMODULE_HPP
-# define HOSTMODULE_HPP
+#ifndef NETWORKMODULE_HPP
+# define NETWORKMODULE_HPP
 
 # include "ft_gk.h"
 # include "IMonitorModule.hpp"
 # include "IMonitorDisplay.hpp"
 
-class	HostModule : public IMonitorModule
+class	NetworkModule : public IMonitorModule
 {
 public:
-	HostModule(Core *core);
-	virtual ~HostModule(void);
+	NetworkModule(Core *core);
+	virtual ~NetworkModule(void);
 
 	virtual const char			*getName(void) const;
 
@@ -33,13 +33,10 @@ public:
 protected:
 	Core						*_core;
 
-	std::string					_hostname;
-	std::string					_username;
-
 private:
-	HostModule(void);
-	HostModule(HostModule const &src);
-	HostModule					&operator=(HostModule const &rhs);
+	NetworkModule(void);
+	NetworkModule(NetworkModule const &src);
+	NetworkModule				&operator=(NetworkModule const &rhs);
 };
 
 #endif

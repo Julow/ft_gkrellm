@@ -16,13 +16,21 @@ o/Core.cpp.o: srcs/Core.cpp h/Core.hpp h/IMonitorDisplay.hpp h/IMonitorModule.hp
 	@$(COMPILE)
 o/CpuModule.cpp.o: srcs/CpuModule.cpp h/CpuModule.hpp
 	@$(COMPILE)
+o/DiskModule.cpp.o: srcs/DiskModule.cpp h/DiskModule.hpp h/Core.hpp
+	@$(COMPILE)
 o/HostModule.cpp.o: srcs/HostModule.cpp h/HostModule.hpp
 	@$(COMPILE)
-o/main.cpp.o: srcs/main.cpp h/ft_gk.h h/Core.hpp h/NCursesDisplay.hpp h/HostModule.hpp h/CpuModule.hpp h/TimeModule.hpp h/OsInfoModule.hpp
+o/LoadModule.cpp.o: srcs/LoadModule.cpp h/LoadModule.hpp h/Core.hpp
+	@$(COMPILE)
+o/main.cpp.o: srcs/main.cpp h/ft_gk.h h/Core.hpp h/NCursesDisplay.hpp h/HostModule.hpp h/CpuModule.hpp h/TimeModule.hpp h/OsInfoModule.hpp h/DiskModule.hpp h/ProcessModule.hpp h/NetworkModule.hpp h/LoadModule.hpp
 	@$(COMPILE)
 o/NCursesDisplay.cpp.o: srcs/NCursesDisplay.cpp h/NCursesDisplay.hpp h/IMonitorModule.hpp h/Core.hpp
 	@$(COMPILE)
+o/NetworkModule.cpp.o: srcs/NetworkModule.cpp h/NetworkModule.hpp h/Core.hpp
+	@$(COMPILE)
 o/OsInfoModule.cpp.o: srcs/OsInfoModule.cpp h/OsInfoModule.hpp
+	@$(COMPILE)
+o/ProcessModule.cpp.o: srcs/ProcessModule.cpp h/ProcessModule.hpp h/Core.hpp
 	@$(COMPILE)
 o/Stats.cpp.o: srcs/Stats.cpp h/Stats.hpp
 	@$(COMPILE)
@@ -36,10 +44,14 @@ COMPILE = $(MSG_0) $< ; $(CC) $(FLAGS) $(HEADS) -c -o $@ $< || $(MSG_1) $<
 
 O_FILES := o/Core.cpp.o \
 		o/CpuModule.cpp.o \
+		o/DiskModule.cpp.o \
 		o/HostModule.cpp.o \
+		o/LoadModule.cpp.o \
 		o/main.cpp.o \
 		o/NCursesDisplay.cpp.o \
+		o/NetworkModule.cpp.o \
 		o/OsInfoModule.cpp.o \
+		o/ProcessModule.cpp.o \
 		o/Stats.cpp.o \
 		o/TimeModule.cpp.o
 

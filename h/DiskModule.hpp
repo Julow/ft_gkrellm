@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HostModule.hpp                                     :+:      :+:    :+:   */
+/*   DiskModule.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/04/18 15:22:55 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/19 13:55:39 by jaguillo         ###   ########.fr       */
+/*   Created: 2015/04/19 13:46:36 by jaguillo          #+#    #+#             */
+/*   Updated: 2015/04/19 14:04:27 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HOSTMODULE_HPP
-# define HOSTMODULE_HPP
+#ifndef DISKMODULE_HPP
+# define DISKMODULE_HPP
 
 # include "ft_gk.h"
 # include "IMonitorModule.hpp"
 # include "IMonitorDisplay.hpp"
 
-class	HostModule : public IMonitorModule
+class	DiskModule : public IMonitorModule
 {
 public:
-	HostModule(Core *core);
-	virtual ~HostModule(void);
+	DiskModule(Core *core);
+	virtual ~DiskModule(void);
 
 	virtual const char			*getName(void) const;
 
@@ -33,13 +33,10 @@ public:
 protected:
 	Core						*_core;
 
-	std::string					_hostname;
-	std::string					_username;
-
 private:
-	HostModule(void);
-	HostModule(HostModule const &src);
-	HostModule					&operator=(HostModule const &rhs);
+	DiskModule(void);
+	DiskModule(DiskModule const &src);
+	DiskModule					&operator=(DiskModule const &rhs);
 };
 
 #endif

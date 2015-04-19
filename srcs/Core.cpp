@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/18 13:04:51 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/19 12:51:13 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/19 13:52:44 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void							Core::start(void) throw (std::runtime_error)
 {
 	clock_t							lastUpdate;
 
-	lastUpdate = 0;
+	lastUpdate = -CLOCKS_PER_SEC;
 	while (1)
 	{
 		while ((clock() - lastUpdate) < CLOCKS_PER_SEC)

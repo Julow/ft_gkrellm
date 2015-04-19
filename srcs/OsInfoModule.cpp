@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/18 15:22:52 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/18 18:13:49 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/19 14:49:55 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ OsInfoModule::~OsInfoModule(void)
 
 const char			*OsInfoModule::getName(void) const
 {
-	return ("OsInfoModule");
+	return ("OS Info");
 }
 
 int					OsInfoModule::getWidth(void) const

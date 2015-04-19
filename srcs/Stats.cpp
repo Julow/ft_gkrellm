@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/19 11:49:19 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/19 12:50:26 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/19 13:46:02 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void			Stats::update(void)
 	if (fp == NULL)
 		return ;
 	_fgets(fp, &processes);
-	_fgets(fp, NULL);
+	_fgets(fp, &cpuLoad);
 	_fgets(fp, &cpuLoad);
 	_fgets(fp, &cpuUsage);
 	_fgets(fp, &sharedLibs);
@@ -49,7 +49,7 @@ void			Stats::_fgets(FILE *fp, std::string *dst) const
 
 	if (dst != NULL)
 		dst->clear();
-	if (fgets(buff, 128, fp) == NULL)
+	if (fgets(buff, 127, fp) == NULL)
 		return ;
 	if (dst != NULL)
 		*dst += buff;
