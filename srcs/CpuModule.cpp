@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/18 15:22:52 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/19 15:08:43 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/19 17:17:17 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,10 @@ void				CpuModule::refresh(void)
 
 	sysctlbyname("machdep.cpu.brand_string", str, &len, NULL, 0);
 	this->_cpuName = str;
-
 	len = sizeof(int);
 	sysctlbyname("hw.ncpu", &(this->_ncpu), &len, NULL, 0);
-
 	len = sizeof(long);
 	sysctlbyname("hw.busfrequency", &(this->_busFrequency), &len, NULL, 0);
-
 	len = sizeof(long);
 	sysctlbyname("hw.cpufrequency", &data, &len, NULL, 0);
 	this->_cpuFrequency = static_cast<double>(static_cast<double>(data) / static_cast<double>(this->_busFrequency) / 10.0);
@@ -63,22 +60,8 @@ void				CpuModule::refresh(void)
 
 void				CpuModule::display(IMonitorDisplay *display, int y)
 {
-	std::ostringstream			oss;
-
-	display->print(-1, y, this->_cpuName, F_CENTER);
-	y++;
-	display->print(0, y + 1, "Nb coeurs:", 0);
-	oss << this->_ncpu;
-	display->print(15, y + 1, oss.str(), 0);
-	display->print(0, y + 2, "Bus speed:", 0);
-	oss.str("");
-	oss.clear();
-	oss << this->_busFrequency;
-	display->print(15, y + 2, oss.str(), 0);
-	display->print(0, y + 3, "CPU speed:", 0);
-	oss.str("");
-	oss.clear();
-	oss << this->_cpuFrequency << " GHz";
-	display->print(15, y + 3, oss.str(), 0);
-
+	display->print(-1, ++y, this->_cpuName, F_CENTER);
+	display->print(-1, ++y, std::string("Cores: ") += std::to_string(_ncpu), F_CENTER);
+	display->print(-1, ++y, std::string("Bus speed: ") += std::to_string(_busFrequency), F_CENTER);
+	display->print(-1, ++y, (std::string("CPU speed: ") += std::to_string(_cpuFrequency)) += " GHz", F_CENTER);
 }

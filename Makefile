@@ -79,6 +79,7 @@ clean:
 
 fclean: clean
 	@rm -f ft_gkrellm 2> /dev/null || true
+	@rm -rf SFML
 
 re: fclean all
 
