@@ -6,7 +6,7 @@
 /*   By: olysogub <olysogub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/18 15:12:03 by olysogub          #+#    #+#             */
-/*   Updated: 2015/04/18 18:44:14 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/19 12:31:59 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ void						NCursesDisplay::display(void)
 	int							y = 0;
 
 	_core->getModules();
-	std::vector<IMonitorModule*>::iterator it = _core->getModules().begin();
-	std::vector<IMonitorModule*>::iterator end = _core->getModules().end();
+	std::list<IMonitorModule*>::iterator it = _core->getModules().begin();
+	std::list<IMonitorModule*>::iterator end = _core->getModules().end();
 
 	wclear(_win);
 	for (; it != end; ++it)

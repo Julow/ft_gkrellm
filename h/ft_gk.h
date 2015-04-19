@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/18 13:06:34 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/18 18:34:32 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/19 11:49:41 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ class	IMonitorDisplay;
 class	IMonitorModule;
 
 class	Core;
+class	Stats;
 
 class	NCursesDisplay;
 class	GtkDisplay;

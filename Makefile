@@ -24,6 +24,8 @@ o/NCursesDisplay.cpp.o: srcs/NCursesDisplay.cpp h/NCursesDisplay.hpp h/IMonitorM
 	@$(COMPILE)
 o/OsInfoModule.cpp.o: srcs/OsInfoModule.cpp h/OsInfoModule.hpp
 	@$(COMPILE)
+o/Stats.cpp.o: srcs/Stats.cpp h/Stats.hpp
+	@$(COMPILE)
 o/TimeModule.cpp.o: srcs/TimeModule.cpp h/TimeModule.hpp
 	@$(COMPILE)
 
@@ -38,6 +40,7 @@ O_FILES := o/Core.cpp.o \
 		o/main.cpp.o \
 		o/NCursesDisplay.cpp.o \
 		o/OsInfoModule.cpp.o \
+		o/Stats.cpp.o \
 		o/TimeModule.cpp.o
 
 $(NAME): o/ $(LIBS) $(O_FILES)
