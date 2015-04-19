@@ -24,11 +24,13 @@ o/HostModule.cpp.o: srcs/HostModule.cpp h/HostModule.hpp
 	@$(COMPILE)
 o/LoadModule.cpp.o: srcs/LoadModule.cpp h/LoadModule.hpp h/Core.hpp
 	@$(COMPILE)
-o/main.cpp.o: srcs/main.cpp h/ft_gk.h h/Core.hpp h/NCursesDisplay.hpp h/SfmlDisplay.hpp h/HostModule.hpp h/CpuModule.hpp h/TimeModule.hpp h/OsInfoModule.hpp h/DiskModule.hpp h/ProcessModule.hpp h/NetworkModule.hpp h/LoadModule.hpp h/CatModule.hpp h/MemModule.hpp h/MemActivityModule.hpp
+o/main.cpp.o: srcs/main.cpp h/ft_gk.h h/Core.hpp h/NCursesDisplay.hpp h/SfmlDisplay.hpp h/ModuleFactory.hpp
 	@$(COMPILE)
 o/MemActivityModule.cpp.o: srcs/MemActivityModule.cpp h/MemActivityModule.hpp h/Core.hpp
 	@$(COMPILE)
 o/MemModule.cpp.o: srcs/MemModule.cpp h/MemModule.hpp h/Core.hpp
+	@$(COMPILE)
+o/ModuleFactory.cpp.o: srcs/ModuleFactory.cpp h/ModuleFactory.hpp h/HostModule.hpp h/CpuModule.hpp h/TimeModule.hpp h/OsInfoModule.hpp h/DiskModule.hpp h/ProcessModule.hpp h/NetworkModule.hpp h/LoadModule.hpp h/CatModule.hpp h/MemModule.hpp h/MemActivityModule.hpp
 	@$(COMPILE)
 o/NCursesDisplay.cpp.o: srcs/NCursesDisplay.cpp h/NCursesDisplay.hpp h/IMonitorModule.hpp h/Core.hpp
 	@$(COMPILE)
@@ -59,6 +61,7 @@ O_FILES := o/CatModule.cpp.o \
 		o/main.cpp.o \
 		o/MemActivityModule.cpp.o \
 		o/MemModule.cpp.o \
+		o/ModuleFactory.cpp.o \
 		o/NCursesDisplay.cpp.o \
 		o/NetworkModule.cpp.o \
 		o/OsInfoModule.cpp.o \
