@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/18 13:06:34 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/19 11:49:41 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/19 17:24:35 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define FT_GK_H
 
 # define IGNORE(a)		(static_cast<void>(a))
+
+# define FPS			(CLOCKS_PER_SEC / 2)
 
 # define WIN_WIDTH		50
 

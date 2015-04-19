@@ -6,7 +6,7 @@
 /*   By: olysogub <olysogub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/18 15:12:03 by olysogub          #+#    #+#             */
-/*   Updated: 2015/04/19 16:03:19 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/19 17:23:41 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <vector>
 
 NCursesDisplay::NCursesDisplay(Core *core) throw(std::runtime_error)
-	: _core(core)
+	: _core(core), _scrollY(0)
 {
 	NCursesDisplay::init();
 	_win = newwin(0, WIN_WIDTH + 2, 0, NCursesDisplay::_winCount * (WIN_WIDTH + 1));
@@ -50,6 +50,9 @@ bool						NCursesDisplay::update(void)
 			if (_core->getModules().size() > (c - '0'))
 				_core->getModules().erase(_core->getModules().begin() + (c - '0'));
 		}
+		else if ((c == KEY_UP && _scrollY > 0)
+			|| (c == KEY_DOWN && (_scrollY + 1) < _core->getModules().size()))
+			_scrollY += (c == KEY_UP) ? -1 : 1;
 	getmaxyx(_win, _height, _width);
 	return (true);
 }
@@ -61,6 +64,7 @@ void						NCursesDisplay::display(void)
 	std::vector<IMonitorModule*>::iterator end = _core->getModules().end();
 
 	wclear(_win);
+	it += _scrollY;
 	for (; it != end; ++it)
 	{
 		wmove(_win, y++, 1);

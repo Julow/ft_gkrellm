@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/18 14:18:50 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/19 15:59:51 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/19 17:20:13 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ protected:
 	WINDOW						*_win;
 	int							_width;
 	int							_height;
+
+	int							_scrollY;
 
 	static bool					_initied;
 	static int					_winCount;
