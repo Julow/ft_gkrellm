@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/18 15:22:55 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/18 18:13:53 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/19 19:25:23 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,8 @@ protected:
 	std::string					_osRelease;
 	static t_osi				_oss[];
 
-
-
 private:
+	OsInfoModule(void);
 	OsInfoModule(OsInfoModule const &src);
 	OsInfoModule					&operator=(OsInfoModule const &rhs);
 };

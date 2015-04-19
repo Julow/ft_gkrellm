@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/18 14:18:50 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/19 17:20:13 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/19 19:25:34 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ protected:
 	static int					_winCount;
 
 private:
+	NCursesDisplay(void);
 	NCursesDisplay(NCursesDisplay const &src);
 	NCursesDisplay				&operator=(NCursesDisplay const &rhs);
 };
