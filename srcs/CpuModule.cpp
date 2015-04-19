@@ -36,7 +36,7 @@ int					CpuModule::getWidth(void) const
 
 int					CpuModule::getHeight(void) const
 {
-	return (2);
+	return (6);
 }
 
 void				CpuModule::refresh(void)
