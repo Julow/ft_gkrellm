@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/18 15:22:52 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/18 18:41:20 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/19 17:17:47 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ HostModule::~HostModule(void)
 
 const char			*HostModule::getName(void) const
 {
-	return ("HostModule");
+	return ("Host");
 }
 
 int					HostModule::getHeight(void) const
 {
-	return (3);
+	return (4);
 }
 
 void				HostModule::refresh(void)

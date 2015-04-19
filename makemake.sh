@@ -7,7 +7,7 @@
 #    By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/04/07 22:29:29 by jaguillo          #+#    #+#              #
-#    Updated: 2015/04/19 16:45:36 by jaguillo         ###   ########.fr        #
+#    Updated: 2015/04/19 17:15:34 by jaguillo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -173,6 +173,7 @@ clean:
 
 fclean: clean
 	@rm -f $NAME 2> /dev/null || true
+	@rm -rf SFML || true
 
 re: fclean all
 
