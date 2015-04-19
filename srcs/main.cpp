@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/18 13:05:34 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/19 19:50:52 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/19 20:17:08 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void			parse_argv(char **argv, Core *core) throw(std::exception)
 {
 	if (*argv == NULL)
 		throw std::runtime_error("Please specifie monitor(s) to use and modules to display\n"
-			"Available monitors: sfml, ncurses\n"
-			"Available modules: host, cpu, time, osinfo, disk, process, network, load, cat, mem, memactivity");
+			"Available monitors: sfml ncurses\n"
+			"Available modules: host cpu time osinfo disk process network load cat mem memactivity");
 	while (*argv != NULL)
 	{
 		if (strcmp(*argv, "sfml") == 0)

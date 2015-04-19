@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/18 13:06:34 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/19 17:24:35 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/19 20:14:51 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 # define UPDATE_TIME	(CLOCKS_PER_SEC / 60)
 
 # define WIN_WIDTH		50
+
+# define MAX_SFML		10
+# define MAX_NCURSES	5
 
 # define F_CENTER		(1 << 1)
 

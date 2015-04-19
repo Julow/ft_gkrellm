@@ -6,7 +6,7 @@
 /*   By: olysogub <olysogub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/18 15:12:03 by olysogub          #+#    #+#             */
-/*   Updated: 2015/04/19 17:23:41 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/19 20:17:44 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,13 @@
 #include "Core.hpp"
 #include <ncurses.h>
 #include <vector>
+#include <exception>
 
 NCursesDisplay::NCursesDisplay(Core *core) throw(std::runtime_error)
 	: _core(core), _scrollY(0)
 {
+	if (NCursesDisplay::_winCount > MAX_NCURSES)
+		throw std::runtime_error("Too many ncurses");
 	NCursesDisplay::init();
 	_win = newwin(0, WIN_WIDTH + 2, 0, NCursesDisplay::_winCount * (WIN_WIDTH + 1));
 	if (_win == NULL)

@@ -6,7 +6,7 @@
 /*   By: olysogub <olysogub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/18 15:12:03 by olysogub          #+#    #+#             */
-/*   Updated: 2015/04/19 19:28:34 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/19 20:17:49 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,14 @@
 #include <vector>
 
 SfmlDisplay::SfmlDisplay(Core *core) throw(std::runtime_error)
-	: sf::RenderWindow(sf::VideoMode(CHAR_WIDTH * WIN_WIDTH, CHAR_WIDTH * WIN_HEIGHT), "ft_gkrellm"), _core(core), _scrollY(0), _im()
+	: sf::RenderWindow(sf::VideoMode(CHAR_WIDTH * WIN_WIDTH, CHAR_WIDTH * WIN_HEIGHT), "ft_gkrellm"), _core(core), _scrollY(0)
 {
-
-	if(!_font.loadFromFile("font1.ttf"))
-		throw std::runtime_error("Can not load font !");
-	if (!_im.loadFromFile("background1.jpg"))
-		throw std::runtime_error("Can not load background !");
-
+	if (SfmlDisplay::_windowCount > MAX_SFML)
+		throw std::runtime_error("Too many SFML");
+	if (!SfmlDisplay::_initied)
+		SfmlDisplay::_init();
 	_text = sf::Text("A", _font, CHAR_WIDTH);
+	SfmlDisplay::_windowCount++;
 }
 
 SfmlDisplay::~SfmlDisplay(void)
@@ -73,13 +72,11 @@ void						SfmlDisplay::display(void)
 	std::vector<IMonitorModule*>::iterator end = _core->getModules().end();
 
 	this->clear();
-
 	sf::Texture texture;
-	texture.loadFromImage(this->_im);
-	this->_background.setTexture(texture, true);
-	this->_background.setPosition(0, 0);
-
-	this->draw(this->_background);
+	texture.loadFromImage(SfmlDisplay::_im);
+	SfmlDisplay::_background.setTexture(texture, true);
+	SfmlDisplay::_background.setPosition(0, 0);
+	this->draw(_background);
 	it += _scrollY;
 	for (; it != end; ++it)
 	{
@@ -89,12 +86,9 @@ void						SfmlDisplay::display(void)
 		this->draw(rectangle);
 		this->print(-1, y + 1, (*it)->getName(), F_CENTER);
 		y += 3;
-
 		(*it)->display(this, y);
 		y += (*it)->getHeight();
 	}
-
-
 	sf::RenderWindow::display();
 	return ;
 }
@@ -103,6 +97,7 @@ void						SfmlDisplay::print(int x, int y, std::string const &data, int flags)
 {
 	float						posX;
 	float						posY;
+
 	if (y >= WIN_HEIGHT)
 		return ;
 	posX = static_cast<float>(x * CHAR_WIDTH);
@@ -115,4 +110,23 @@ void						SfmlDisplay::print(int x, int y, std::string const &data, int flags)
 	}
 	_text.setPosition(posX, posY);
 	this->draw(_text);
+}
+
+sf::Font					SfmlDisplay::_font;
+sf::Image					SfmlDisplay::_im;
+sf::Sprite					SfmlDisplay::_background;
+
+bool						SfmlDisplay::_initied = false;
+int							SfmlDisplay::_windowCount = 0;
+
+void						SfmlDisplay::_init(void) throw(std::runtime_error)
+{
+	if (!SfmlDisplay::_initied)
+	{
+		if(!SfmlDisplay::_font.loadFromFile("font1.ttf"))
+			throw std::runtime_error("Can not load font !");
+		if (!SfmlDisplay::_im.loadFromFile("background1.jpg"))
+			throw std::runtime_error("Can not load background !");
+		SfmlDisplay::_initied = true;
+	}
 }
