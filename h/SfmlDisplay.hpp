@@ -43,6 +43,9 @@ protected:
 
 	sf::Font					_font;
 	sf::Text					_text;
+	sf::Image					_im;
+	sf::Sprite					_background;
+
 
 private:
 	SfmlDisplay(SfmlDisplay const &src);
