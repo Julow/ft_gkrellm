@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/18 13:05:34 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/19 15:23:05 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/19 15:55:33 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int				main(int argc, char **argv)
 	try
 	{
 		core.loadDisplay(new NCursesDisplay(&core));
-		core.loadDisplay(new NCursesDisplay(&core));
 		core.loadModule(new HostModule(&core));
 		core.loadModule(new CpuModule(&core));
 		core.loadModule(new TimeModule(&core));
@@ -40,6 +39,9 @@ int				main(int argc, char **argv)
 		core.loadModule(new DiskModule(&core));
 		core.loadModule(new ProcessModule(&core));
 		core.loadModule(new NetworkModule(&core));
+		core.loadModule(new CatModule(&core));
+		core.loadModule(new CatModule(&core));
+		core.loadModule(new CatModule(&core));
 		core.loadModule(new CatModule(&core));
 		core.start();
 	}

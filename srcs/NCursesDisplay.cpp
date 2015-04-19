@@ -6,7 +6,7 @@
 /*   By: olysogub <olysogub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/18 15:12:03 by olysogub          #+#    #+#             */
-/*   Updated: 2015/04/19 12:31:59 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/19 16:03:19 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 NCursesDisplay::NCursesDisplay(Core *core) throw(std::runtime_error)
 	: _core(core)
 {
-
 	NCursesDisplay::init();
 	_win = newwin(0, WIN_WIDTH + 2, 0, NCursesDisplay::_winCount * (WIN_WIDTH + 1));
 	if (_win == NULL)
@@ -46,29 +45,35 @@ bool						NCursesDisplay::update(void)
 	while ((c = getch()) != ERR)
 		if (c == 'q' || c == 27)
 			return (false);
+		else if (c >= '0' && c <= '9')
+		{
+			if (_core->getModules().size() > (c - '0'))
+				_core->getModules().erase(_core->getModules().begin() + (c - '0'));
+		}
+	getmaxyx(_win, _height, _width);
 	return (true);
 }
 
 void						NCursesDisplay::display(void)
 {
 	int							y = 0;
-
-	_core->getModules();
-	std::list<IMonitorModule*>::iterator it = _core->getModules().begin();
-	std::list<IMonitorModule*>::iterator end = _core->getModules().end();
+	std::vector<IMonitorModule*>::iterator it = _core->getModules().begin();
+	std::vector<IMonitorModule*>::iterator end = _core->getModules().end();
 
 	wclear(_win);
-
 	for (; it != end; ++it)
 	{
 		wmove(_win, y++, 1);
+		if (y >= _height)
+			break ;
 		wattron(_win, COLOR_PAIR(1));
 		whline(_win, '=', WIN_WIDTH);
 		wattron(_win, COLOR_PAIR(2));
 		print(-1, y++, (*it)->getName(), F_CENTER);
-		wattroff(_win, COLOR_PAIR(2));
 		wmove(_win, y++, 1);
 		wattron(_win, COLOR_PAIR(3));
+		if (y >= _height)
+			break ;
 		whline(_win, '-', WIN_WIDTH);
 		wattroff(_win, COLOR_PAIR(3));
 		(*it)->display(this, y);
@@ -81,6 +86,8 @@ void						NCursesDisplay::display(void)
 
 void						NCursesDisplay::print(int x, int y, std::string const &data, int flags)
 {
+	if (y >= _height)
+		return ;
 	if (flags & F_CENTER)
 	{
 		if (x == -1)
@@ -88,7 +95,7 @@ void						NCursesDisplay::print(int x, int y, std::string const &data, int flags
 		x -= data.size() / 2;
 	}
 	wmove(_win, y, x + 1);
-	wprintw(_win, data.c_str());
+	wprintw(_win, "%s", data.c_str());
 }
 
 bool						NCursesDisplay::_initied = false;

@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/18 13:04:51 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/19 13:52:44 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/19 15:47:57 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void							Core::loadDisplay(IMonitorDisplay *display)
 
 void							Core::removeModule(std::string const & moduleName)
 {
-	std::list<IMonitorModule*>::const_iterator	it;
+	std::vector<IMonitorModule*>::const_iterator	it;
 
 	it = _modules.begin();
 	while (it != _modules.end())
@@ -85,7 +85,7 @@ void							Core::removeDisplay(std::string const & displayName)
 	}
 }
 
-std::list<IMonitorModule*>		&Core::getModules(void)
+std::vector<IMonitorModule*>	&Core::getModules(void)
 {
 	return (_modules);
 }
@@ -116,7 +116,7 @@ void							Core::_update(void)
 
 void							Core::_refresh(void)
 {
-	std::list<IMonitorModule *>::const_iterator		it;
+	std::vector<IMonitorModule *>::const_iterator		it;
 
 	it = _modules.begin();
 	while (it != _modules.end())

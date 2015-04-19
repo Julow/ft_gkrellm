@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/19 13:46:38 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/19 14:49:36 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/19 15:33:09 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,6 @@ void				DiskModule::display(IMonitorDisplay *display, int y)
 	len = str.find(", ");
 	display->print(-1, y + 2, str.substr(0, len), F_CENTER);
 	str.erase(0, len + 2);
-	len = str.find(", ");
+	len = str.find(".");
 	display->print(-1, y + 3, str.substr(0, len), F_CENTER);
 }

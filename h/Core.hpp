@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/18 13:04:53 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/04/19 12:30:51 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/04/19 15:48:14 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "ft_gk.h"
 # include "Stats.hpp"
-# include <list>
 # include <vector>
 
 class	Core
@@ -32,13 +31,13 @@ public:
 	void							removeModule(std::string const & moduleName);
 	void							removeDisplay(std::string const & displayName);
 
-	std::list<IMonitorModule*>		&getModules(void);
+	std::vector<IMonitorModule*>	&getModules(void);
 
 	Stats const						&getStats(void) const;
 
 protected:
 	std::vector<IMonitorDisplay*>	_displays;
-	std::list<IMonitorModule*>		_modules;
+	std::vector<IMonitorModule*>	_modules;
 
 	Stats							_stats;
 
