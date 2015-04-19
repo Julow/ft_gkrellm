@@ -18,9 +18,11 @@ o/CpuModule.cpp.o: srcs/CpuModule.cpp h/CpuModule.hpp
 	@$(COMPILE)
 o/HostModule.cpp.o: srcs/HostModule.cpp h/HostModule.hpp
 	@$(COMPILE)
-o/main.cpp.o: srcs/main.cpp h/ft_gk.h h/Core.hpp h/NCursesDisplay.hpp h/HostModule.hpp h/CpuModule.hpp
+o/main.cpp.o: srcs/main.cpp h/ft_gk.h h/Core.hpp h/NCursesDisplay.hpp h/HostModule.hpp h/CpuModule.hpp h/TimeModule.hpp h/OsInfoModule.hpp
 	@$(COMPILE)
 o/NCursesDisplay.cpp.o: srcs/NCursesDisplay.cpp h/NCursesDisplay.hpp h/IMonitorModule.hpp h/Core.hpp
+	@$(COMPILE)
+o/OsInfoModule.cpp.o: srcs/OsInfoModule.cpp h/OsInfoModule.hpp
 	@$(COMPILE)
 o/TimeModule.cpp.o: srcs/TimeModule.cpp h/TimeModule.hpp
 	@$(COMPILE)
@@ -35,6 +37,7 @@ O_FILES := o/Core.cpp.o \
 		o/HostModule.cpp.o \
 		o/main.cpp.o \
 		o/NCursesDisplay.cpp.o \
+		o/OsInfoModule.cpp.o \
 		o/TimeModule.cpp.o
 
 $(NAME): o/ $(LIBS) $(O_FILES)

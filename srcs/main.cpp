@@ -16,6 +16,7 @@
 #include "HostModule.hpp"
 #include "CpuModule.hpp"
 #include "TimeModule.hpp"
+#include "OsInfoModule.hpp"
 #include <iostream>
 
 int				main(int argc, char **argv)
@@ -28,6 +29,7 @@ int				main(int argc, char **argv)
 		core.loadModule(new HostModule(&core));
 		core.loadModule(new CpuModule(&core));
 		core.loadModule(new TimeModule(&core));
+		core.loadModule(new OsInfoModule(&core));
 		core.start();
 	}
 	catch (std::exception &e)

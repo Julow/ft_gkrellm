@@ -35,7 +35,7 @@ const char			*TimeModule::getName(void) const
 
 int					TimeModule::getHeight(void) const
 {
-	return (1);
+	return (3);
 }
 
 void				TimeModule::refresh(void)

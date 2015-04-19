@@ -46,6 +46,7 @@ void				CpuModule::refresh(void)
 	char			str[1048];
 
 	len = 1048;
+
 	sysctlbyname("machdep.cpu.brand_string", str, &len, NULL, 0);
 	this->_cpuName = str;
 
